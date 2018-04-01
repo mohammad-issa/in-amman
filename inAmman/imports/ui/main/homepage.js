@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import LoginForm from '../loginForm/loginForm';
-import SignupForm from '../loginForm/signupForm';
+import LoginForm from '../accountForms/loginForm';
+import SignupForm from '../accountForms/signupForm';
 
 class Homepage extends Component {
   constructor(props){

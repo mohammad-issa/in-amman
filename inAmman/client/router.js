@@ -23,13 +23,13 @@ FlowRouter.route('/',{
 
 FlowRouter.route('/app',{
 	action(){
-		// if(Meteor.userId()){
-			// FlowRouter.redirect('/home')
-		// }
-		// else{
+		if(!Meteor.userId()){
+			FlowRouter.redirect('/')
+		}
+		else{
 			mount(MainLayout,{
 				content:(<App/>)
 			})
-		// }
+		}
 	}
 })

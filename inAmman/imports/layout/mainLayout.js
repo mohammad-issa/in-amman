@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from '../ui/header/header';
+import Footer from '../ui/footer/footer';
 
 export const MainLayout = ({content}) =>(
 	<div className="app">
@@ -8,5 +9,6 @@ export const MainLayout = ({content}) =>(
 		<div className="app-body">
 			{content}
 		</div>
+		<Footer/>
 	</div>
 )
