@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Tasks } from '../../api/tasks.js';
  
-class App extends Component {
+class Header extends Component {
   render(){
     return(
-      <h1>app</h1>
+      <div>
+      	<a href="/">Home</a>
+      	<a href="/app">App</a>
+      	<hr/>
+      </div>
     )
   }
 }
- 
+
 export default withTracker(() => {
   return {
-    tasks: 'App',
+    tasks: 'Header',
   };
-})(App);
+})(Header);

@@ -12,23 +12,7 @@ class Homepage extends Component {
   render(){
     return(
       <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+        <h1>Home</h1>
         <SignupForm/>
         <LoginForm/>
       </div>
