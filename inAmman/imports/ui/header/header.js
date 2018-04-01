@@ -6,6 +6,15 @@ class Header extends Component {
   render(){
     return(
       <div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
       	<a href="/">Home</a>
       	<a href="/app">App</a>
       	<hr/>
