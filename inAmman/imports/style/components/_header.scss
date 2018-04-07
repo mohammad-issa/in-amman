@@ -1,0 +1,37 @@
+.ia-header{
+	background: $s-dark-color;
+	&__menu{
+		display: inline-block;
+		&__item{
+			color: $p-light-color;
+	    	position: relative;
+			font-weight: 300;
+    	    margin: 16px 16px 0 16px;
+    		padding-bottom: 16px;
+		    text-transform: uppercase;
+    		font-size: 13px;
+    		letter-spacing: 2px;
+			&:after{
+				content: '';
+				width: 100%;
+			    height: 6px;
+			    background: $accent-color;
+			    position: absolute;
+			    left: 0;
+		        bottom: 0;
+		        -ms-transform: scale(0,1);
+    			-webkit-transform: scale(0,1);
+    			transform: scale(0,1);
+				transition: all 0.2s ease-out;
+
+			}
+			&:hover, &--active{
+				&:after{
+					-ms-transform: scale(1,1);
+    				-webkit-transform: scale(1,1);
+    				transform: scale(1,1);
+				}
+			}
+		}
+	}
+}

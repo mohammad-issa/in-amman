@@ -1,7 +1,44 @@
 body,html{
 	padding:0;
 	margin:0;
+	font-family: 'Poppins', sans-serif;
+	color : $primary-text;
+	background: $primary-color;
+    height: 100%;
+}
+#in-amman-root, .in-amman-app{
+    height: 100%;
+}
+.ia-body{
+	min-height: calc(100% - 61px);
+}
+// Elements
+a:active, a:hover, a:visited, a:link{
+	text-decoration: none;
 }
 a{
-	background : green;
+    display: inline-block;
+}
+
+h1,h2,h3,h4,h5,h6,hr,{
+	margin:0;
+}
+
+// 
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.list-inline {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	li {
+		display: inline-block;
+	}
+}
+.full-width {
+	width: 100%;
 }

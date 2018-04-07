@@ -1,0 +1,19 @@
+.btn{
+    padding: 4px 8px;
+    outline: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: $p-light-color;
+	transition: all 0.2s ease-out;
+	cursor: pointer;
+}
+.btn-dark{
+    color: $s-dark-color;
+    border: 0.5px solid $s-dark-color;
+    &:hover {
+    	background: $s-dark-color;
+    	color: $p-light-color;
+	}
+	
+}
+
