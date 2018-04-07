@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor'
 import { withTracker } from 'meteor/react-meteor-data';
 
 export default class LoginForm extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       user:{
@@ -13,52 +13,72 @@ export default class LoginForm extends Component {
       }
     }
     this.setValues = this.setValues.bind(this);
-    this.login = this.login.bind(this);
-    // this.logout = this.logout.bind(this);
+    this.onLogin = this.onLogin.bind(this);
+    this.overlay = this.overlay.bind(this);
 
   }
-  render(){
+
+  render() {
     return(
-      <div>
-        <input
-          type='text'
-          value={this.state.user.username}
-          placeholder="Username or Email"
-          onChange={(e) => this.setValues('username',e)}
-        />
-        <input
-          type='password'
-          value={this.state.user.password}
-          placeholder="password"
-          onChange={(e) => this.setValues('password',e)}
-        />
-        <button type="button" className="btn btn-primary" onClick={this.login}>Login</button>
+      <div className='ia-basic-modal' onClick={(e) => this.overlay(e)}>
+        <div className='ia-basic-modal__data'>
+            <div className="ia-basic-modal__header text-center">
+              <h4>Login</h4>
+            </div>
+            <div className='ia-basic-modal__body'>
+              <input
+                type='text'
+                value={this.state.user.username}
+                placeholder="Username or Email"
+                onChange={(e) => this.setValues('username',e)}
+              />
+              <input
+                type='password'
+                value={this.state.user.password}
+                placeholder="password"
+                onChange={(e) => this.setValues('password',e)}
+              />
+              <button type="button" className="btn btn-dark full-width" onClick={this.onLogin}>Login</button>
+            </div>
+            <div className='ia-basic-modal__footer text-right'>
+                <button onClick={() => this.props.visibility('login')}>close</button>
+            </div>
+        </div>
       </div>
     )
   }
-  setValues(key,e){
-    // console.log(e.target.value,key)
+
+  setValues(key,e) {
     var newUser = Object.assign({},this.state.user)
     newUser[key] = e.target.value
     this.setState({
       user:newUser
     })
   }
-  login(){
-    var self = this
+
+  onLogin() {
+    let self = this
     Meteor.loginWithPassword(self.state.user.username, self.state.user.password, function(err) {
       if (!err) {
         console.log('success!');
         // Router.go('/home');
+        self.props.loginStatus();
+        self.props.visibility('login')
       } else {
         console.log(err);
         alert(err.reason)
       }
     });
     console.log('login')
-    
+  }
+
+  overlay(e) {
+    if(e.target.className==='ia-basic-modal'){
+      this.props.visibility('login')
+    }
   }
   // logout(){
   //   Meteor.logout();
   // }
+
 }

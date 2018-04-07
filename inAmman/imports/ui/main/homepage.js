@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import LoginForm from '../accountForms/loginForm';
-import SignupForm from '../accountForms/signupForm';
+
 
 class Homepage extends Component {
   constructor(props){
@@ -13,8 +12,7 @@ class Homepage extends Component {
     return(
       <div>
         <h1>Home</h1>
-        <SignupForm/>
-        <LoginForm/>
+        
       </div>
     )
   }
