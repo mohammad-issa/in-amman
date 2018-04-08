@@ -10,6 +10,7 @@ import Homepage from '../imports/ui/main/homepage';
 import OffersMain from '../imports/ui/offers/offersMain';
 import EventsMain from '../imports/ui/events/eventsMain';
 import Admintest from '../imports/ui/admin/admintest';
+import AddEvent from '../imports/ui/admin/addEvent';
 
 const mount2 = withOptions({
     rootId: 'in-amman-root',
@@ -71,6 +72,20 @@ FlowRouter.route('/admin',{
 	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
 				content:(<Admintest/>)
+			})
+		}
+		else{
+			FlowRouter.redirect('/')
+		}
+  }],
+});
+
+FlowRouter.route('/admin/events',{
+  name: 'admin',
+  triggersEnter: [(context, redirect) => {
+	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+			mount2(AdminLayout,{
+				content:(<AddEvent/>)
 			})
 		}
 		else{

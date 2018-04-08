@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Tasks } from '../../api/tasks.js';
- 
+import { Events } from '../../api/events.js';
+
 class EventsMain extends Component {
   render(){
     return(
@@ -11,7 +11,8 @@ class EventsMain extends Component {
 }
  
 export default withTracker(() => {
+  Meteor.subscribe('events');
   return {
-    tasks: 'App',
+    events: Events.find({}).fetch(),
   };
 })(EventsMain);

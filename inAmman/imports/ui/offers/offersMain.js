@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Tasks } from '../../api/tasks.js';
  
 class OffersMain extends Component {
   render(){
