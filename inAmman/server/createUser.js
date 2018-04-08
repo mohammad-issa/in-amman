@@ -5,7 +5,7 @@ if (Meteor.isServer) {
   // if (Meteor.users.findOne({username: "issa"})) {
   //   Roles.addUsersToRoles(Meteor.users.findOne({username: "issa"})._id, 'Admin');
   // }
-  Roles.addUsersToRoles('XAgAL8cJ7fYbQknrk', 'Admin');
+  Roles.addUsersToRoles('CJFWyhgfkL4GXsniF', 'Admin');
 
 
   Accounts.onCreateUser(function(info, user) {
