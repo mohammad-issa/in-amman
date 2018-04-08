@@ -1,18 +1,48 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { Events } from '../../api/events.js';
+
+import { Events } from '../../api/events/events.js';
+import { EventsCategory } from '../../api/events/eventsCategory.js';
+
+import EventCard from '../../../imports/ui/events/eventCard.js';
 
 class EventsMain extends Component {
-  render(){
+  constructor(props) {
+    super(props);
+    this.state = {
+      events : this.props.events,
+    }
+    this.renderCards = this.renderCards.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      events: nextProps.events
+    })
+  }
+
+  render() {
     return(
-      <h1>events</h1>
+      <div>
+        <h1>events</h1>
+        <div >
+          {this.renderCards()}
+        </div>
+
+      </div>
     )
   }
+
+  renderCards() {
+    return this.state.events.map((item, i) => (
+      <EventCard key={i} item={item}/>
+    ))
+  }
 }
- 
 export default withTracker(() => {
   Meteor.subscribe('events');
+  Meteor.subscribe('events_category');
   return {
-    events: Events.find({}).fetch(),
+    events: Events.find({}, { sort: { createdAt: -1 } }).fetch() || [],
   };
 })(EventsMain);
