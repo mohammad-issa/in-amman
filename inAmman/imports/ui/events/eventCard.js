@@ -6,7 +6,11 @@ export default class EventCard extends Component {
   }
   render(){
     return(
-      <p>{this.props.item.title}</p>
+		<div className="col-md-4">
+			<div className="evt-card">
+				<p>{this.props.item.title}</p>
+			</div>
+		</div>
     )
   }
 }

@@ -26,18 +26,26 @@ export default class LoginForm extends Component {
               <h4>Login</h4>
             </div>
             <div className='ia-basic-modal__body'>
-              <input
-                type='text'
-                value={this.state.user.username}
-                placeholder="Username or Email"
-                onChange={(e) => this.setValues('username',e)}
-              />
-              <input
-                type='password'
-                value={this.state.user.password}
-                placeholder="password"
-                onChange={(e) => this.setValues('password',e)}
-              />
+              <div className="input-wapper">
+                <input
+                  type='text'
+                  className="effect-2"
+                  value={this.state.user.username}
+                  placeholder="Username or Email"
+                  onChange={(e) => this.setValues('username',e)}
+                />
+                <span className="focus-border"> </span>
+              </div>
+              <div className="input-wapper">
+                <input
+                  type='password'
+                  className="effect-2"
+                  value={this.state.user.password}
+                  placeholder="password"
+                  onChange={(e) => this.setValues('password',e)}
+                />
+                <span className="focus-border"></span>
+              </div>
               <button type="button" className="btn btn-dark full-width" onClick={this.onLogin}>Login</button>
             </div>
             <div className='ia-basic-modal__footer text-right'>

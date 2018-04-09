@@ -1,6 +1,10 @@
 @import'./shared/_variables.scss';
+@import'./shared/_mixins.scss';
+@import'./packages/normalize.scss';
 @import'./shared/_common.scss';
+@import'./shared/_page-grid.scss';
 @import'./components/_buttons.scss';
+@import'./components/_inputs.scss';
 @import'./components/_header.scss';
 @import'./components/_footer.scss';
 @import'./components/_basic-modal.scss';
