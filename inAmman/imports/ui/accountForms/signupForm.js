@@ -21,35 +21,49 @@ export default class SignupForm extends Component {
       <div className='ia-basic-modal' onClick={(e) => this.overlay(e)}>
         <div className='ia-basic-modal__data'>
 
-            <div className="ia-basic-modal__header">
-              <h4>Login</h4>
+            <div className="ia-basic-modal__header text-center">
+              <h2 className="ia-basic-modal__header__heading">Signup</h2>
             </div>
 
             <div className='ia-basic-modal__body'>
-              <input
-                type='email'
-                value={this.state.userInfo.email}
-                placeholder="email"
-                onChange={(e) => this.setValues('email',e)}
-              />
-              <input
-                type='text'
-                value={this.state.userInfo.username}
-                placeholder="username"
-                onChange={(e) => this.setValues('username',e)}
-              />
-              <input
-                type='password'
-                value={this.state.userInfo.password}
-                placeholder="password"
-                onChange={(e) => this.setValues('password',e)}
-              />
+              <div className="input-wapper">
+                <input
+                  className="effect-2"
+                  type='email'
+                  value={this.state.userInfo.email}
+                  placeholder="Email"
+                  onChange={(e) => this.setValues('email',e)}
+                />
+                <span className="focus-border"> </span>
+              </div>
+              <div className="input-wapper">
+                <input
+                  className="effect-2"
+                  type='text'
+                  value={this.state.userInfo.username}
+                  placeholder="Username"
+                  onChange={(e) => this.setValues('username',e)}
+                />
+                <span className="focus-border"> </span>
+              </div>
+
+              <div className="input-wapper">
+                <input
+                  className="effect-2"
+                  type='password'
+                  value={this.state.userInfo.password}
+                  placeholder="Password"
+                  onChange={(e) => this.setValues('password',e)}
+                />
+                <span className="focus-border"> </span>
+              </div>
+
               <button type="button" className="btn btn-dark full-width" onClick={this.onSignup}>Signup</button>
             </div>
 
-            <div className='ia-basic-modal__footer'>
+            {/*<div className='ia-basic-modal__footer'>
               <button onClick={() => this.props.visibility('signup')}>close</button>
-            </div>
+            </div>*/}
             
         </div>
       </div>

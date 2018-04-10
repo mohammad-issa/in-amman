@@ -23,7 +23,7 @@ export default class LoginForm extends Component {
       <div className='ia-basic-modal' onClick={(e) => this.overlay(e)}>
         <div className='ia-basic-modal__data'>
             <div className="ia-basic-modal__header text-center">
-              <h4>Login</h4>
+              <h2 className="ia-basic-modal__header__heading">Login</h2>
             </div>
             <div className='ia-basic-modal__body'>
               <div className="input-wapper">
@@ -41,16 +41,20 @@ export default class LoginForm extends Component {
                   type='password'
                   className="effect-2"
                   value={this.state.user.password}
-                  placeholder="password"
+                  placeholder="Password"
                   onChange={(e) => this.setValues('password',e)}
                 />
                 <span className="focus-border"></span>
               </div>
               <button type="button" className="btn btn-dark full-width" onClick={this.onLogin}>Login</button>
+              <div className="ia-basic-modal__body__no-account text-center">
+                <div>Have not account yet?</div>
+                <button className="btn-link">signup</button>
+              </div>
             </div>
-            <div className='ia-basic-modal__footer text-right'>
+            {/*<div className='ia-basic-modal__footer text-right'>
                 <button onClick={() => this.props.visibility('login')}>close</button>
-            </div>
+            </div>*/}
         </div>
       </div>
     )
