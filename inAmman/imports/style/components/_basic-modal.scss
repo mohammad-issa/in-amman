@@ -10,7 +10,7 @@
 
 	&__data {
 	    border-radius: $border-radius;
-	    width: 30%;
+	    width: 25%;
 	    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 	    position: absolute;
 	    top: 50%;
@@ -21,10 +21,22 @@
 	&__header {
 	    color: $primary-text;
         padding: 12px 0;
+        border-bottom: 1px solid $primary-text;
+        &__heading {
+    	    font-weight: 400;
+    		font-size: 26px;
+        }
 	}
 
 	&__body {
-		padding: 8px 36px;
+		padding: 0 32px;
+    	margin: 18px 0;
+    	// Accounts From
+    	&__no-account{
+			font-size: 12px;
+		    margin: 22px 0;
+		    color: $secondary-text;
+    	}
 	}
 	
 	&__footer {
