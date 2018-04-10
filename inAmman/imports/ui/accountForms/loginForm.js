@@ -23,7 +23,7 @@ export default class LoginForm extends Component {
       <div className='ia-basic-modal' onClick={(e) => this.overlay(e)}>
         <div className='ia-basic-modal__data'>
             <div className="ia-basic-modal__header text-center">
-              <h2 className="ia-basic-modal__header__heading">Login</h2>
+              <h2 className="ia-basic-modal__header__heading ">Login</h2>
             </div>
             <div className='ia-basic-modal__body'>
               <div className="input-wapper">
