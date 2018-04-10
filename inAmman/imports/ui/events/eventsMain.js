@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
+import { Helmet } from "react-helmet";
+import { Animated } from "react-animated-css";
 
 import { Events } from '../../api/events/events.js';
 import { EventsCategory } from '../../api/events/eventsCategory.js';
@@ -24,8 +26,14 @@ class EventsMain extends Component {
 	render() {
 		return(
 			<div className="ia-events">
+				<Helmet>
+	                <title>Events</title>
+	                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+	            </Helmet>
 				<div className="container">
+				<Animated animationIn="slideInDown" animationOut="fadeOut" isVisible={true}>
 					<h1>events</h1>
+				</Animated>
 					<div className="ia-events__evt-cards-wapper">
 						<div className="row">
 							{this.renderCards()}
