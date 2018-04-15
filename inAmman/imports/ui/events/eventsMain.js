@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { Animated } from "react-animated-css";
 
 import { Events } from '../../api/events/events.js';
-import { EventsCategory } from '../../api/events/eventsCategory.js';
+// import { EventsCategory } from '../../api/events/eventsCategory.js';
 
 import EventCard from '../../../imports/ui/events/eventCard.js';
 
@@ -52,7 +52,7 @@ class EventsMain extends Component {
 }
 export default withTracker(() => {
 	Meteor.subscribe('events');
-	Meteor.subscribe('events_category');
+	// Meteor.subscribe('events_category');
 	return {
 		events: Events.find({}, { sort: { createdAt: -1 } }).fetch() || [],
 	};
