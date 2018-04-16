@@ -1,0 +1,38 @@
+.in-amman-admin {
+	.admin-layout{
+		&__nav {
+			background: $s-dark-color;
+		    position: fixed;
+		    left: 0;
+		    top: 0;
+		    height: 100%;
+		    width: $admin-nav-width;
+    		font-weight: 200;
+		    text-transform: capitalize;
+    		color: $primary-color;
+
+		    .nav-admin-list{
+			    // background: $accent-color;
+			    &__item{
+		    		padding: 8px;
+			    	border-bottom: 1px solid $secondary-color;
+			    	display: inline-block;
+			    	width: 100%;
+			    	cursor: pointer;
+			    	&:link, &:active, &:visited, &:hover {
+			    		color: $primary-color;
+			    	}
+			    }
+			    &__item--active{
+		    		background: $green-color;
+			    }
+		    }
+		}
+
+		&__wapper {
+			width: 100%-$admin-nav-width;
+    		margin: 0 $admin-nav-width;
+			padding: 30px;
+		}
+	}
+}

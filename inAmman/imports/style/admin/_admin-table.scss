@@ -1,0 +1,22 @@
+.admin-table {
+	width: 100%;
+    table-layout: fixed;
+	th {
+		background: $green-color;
+		color: $p-light-color;
+	    padding: 8px;
+	    font-size: 14px;
+    	font-weight: 300;
+    	text-transform: capitalize;
+	}
+
+	tr {
+		td {
+			padding: 4px;
+			font-size: 14px;
+		}
+		&:nth-child(odd){
+			background: $border-color;
+		}
+	}
+}
