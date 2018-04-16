@@ -84,7 +84,7 @@ FlowRouter.route('/admin',{
   }],
 });
 
-FlowRouter.route('/admin/events/',{
+FlowRouter.route('/admin/events',{
   name: 'admin',
   triggersEnter: [(context, redirect) => {
 	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){

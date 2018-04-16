@@ -1,10 +1,15 @@
 import React from 'react';
+import AdminNavbar from './../ui/admin/nav/navbar.js';
 
 export const AdminLayout = ({content}) =>(
 	<div className="in-amman-admin">
-		<h1>Dashboard</h1>
-		<div className="ia-admin">
-			{content}
+		<div className="admin-layout">
+			<div className="admin-layout__nav">
+				<AdminNavbar/>
+			</div>
+			<div className="admin-layout__wapper">
+				{content}
+			</div>
 		</div>
 	</div>
 )
