@@ -11,7 +11,6 @@ if (Meteor.isServer) {
 
 	Meteor.methods({
 		'category.addCategory'(category) {
-			console.log(category)
 			try {
 				check(category, {
 					name: String,
