@@ -12,7 +12,6 @@ if (Meteor.isServer) {
 	Meteor.methods({
 		// Insert New Event
 		'events.insertNewEvent'(evtData) {
-			console.log(evtData);
 			try {
 				check(evtData, {
 					title: String,
@@ -41,6 +40,10 @@ if (Meteor.isServer) {
 			if(!Meteor.userId() && !Meteor.user().roles.indexOf('Admin') !== -1){
 			  throw new Meteor.Error('not-authorized');
 			  return;
+			}
+			// check all inputs required
+			if(evtData.title.trim() === '' || evtData.location.trim() === '' || evtData.thumbnail.trim() === '' || evtData.categoryId.trim() === '' || evtData.store.trim() === '' || evtData.startDate.length <= 0 || evtData.tags.length <= 0 ) {
+			  throw new Meteor.Error('all inputs required');
 			}
 			Events.insert({
 				title: evtData.title,
