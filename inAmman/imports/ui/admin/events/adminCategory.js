@@ -1,10 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { EventsCategory } from '../../../api/events/eventsCategory.js';
+import { Category } from '../../../api/category/category.js';
 
 
-class AdminEventCategory extends Component {
+class EventCategory extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,7 +27,7 @@ class AdminEventCategory extends Component {
 	render() {
 		return(
 			<div>
-				<h1>Event categories</h1>
+				<h1>categories</h1>
 				<form onSubmit={this.addCategory}>
 					<div>
 						<label>Title : </label>
@@ -40,7 +40,7 @@ class AdminEventCategory extends Component {
 						<tbody>
 							<tr>
 								<th>category name</th>
-								<th>active</th>
+								<th>related</th>
 								<th>controls</th>
 							</tr>
 							{this.renderCategoryRow()}
@@ -74,7 +74,7 @@ class AdminEventCategory extends Component {
 
 	renderCategoryRow() {
 		return this.state.categories.map((category,i) =>(
-			<EventCategoryRow
+			<CategoryRow
 				key={i}
 				category={category}
 				showEditModal={this.showEditModal}
@@ -100,7 +100,7 @@ class AdminEventCategory extends Component {
 
 }
 
-class EventCategoryRow extends Component {
+class CategoryRow extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -220,6 +220,6 @@ class EventEditPopup extends Component {
 export default withTracker(() => {
   Meteor.subscribe('events_category');
   return {
-	evtCategories: EventsCategory.find({},{ sort: { createdAt: -1 } }).fetch(),
+	evtCategories: Category.find({},{ sort: { createdAt: -1 } }).fetch(),
   };
-})(AdminEventCategory);
+})(EventCategory);

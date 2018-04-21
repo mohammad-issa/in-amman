@@ -27,12 +27,18 @@ export default class AdminNavbar extends Component {
 					</li>
 					<li>
 						<a
-							href='/admin/events/evtCategory'
-							className={(FlowRouter.current().route.path === '/admin/events/evtCategory' ? 'nav-admin-list__item nav-admin-list__item--active' : 'nav-admin-list__item')}
-							>events categories
+							href='/admin/events/categories'
+							className={(FlowRouter.current().route.path === '/admin/events/categories' ? 'nav-admin-list__item nav-admin-list__item--active' : 'nav-admin-list__item')}
+							>categories
 						</a>
 					</li>
-					<li><a className="nav-admin-list__item">stores</a></li>
+					<li>
+						<a
+							href='/admin/store'
+							className={(FlowRouter.current().route.path === '/admin/store' ? 'nav-admin-list__item nav-admin-list__item--active' : 'nav-admin-list__item')}
+							>stores
+						</a>
+					</li>
 				</ul>
 			</div>
 		)

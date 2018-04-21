@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-import { EventsCategory } from '../../../api/events/eventsCategory.js';
+import { Category } from '../../../api/category/category.js';
 
 
 class AdminEvents extends Component {
@@ -37,31 +37,31 @@ class AdminEvents extends Component {
 					<form onSubmit={this.addEvent}>
 						<div>
 							<label>*Title : </label>
-							<input name="title" ref="evtTitle" type="text"/>
+							<input name='title' ref='evtTitle' type='text'/>
 						</div>
 						<div>
 							<label>Sub title : </label>
-							<input name="subtitle" ref="evtSubTitle" type="text"/>
+							<input name='subtitle' ref='evtSubTitle' type='text'/>
 						</div>
 						
 						<div>
 							<label>Description : </label>
-							<input name="description" ref="evtDescription" type="text"/>
+							<input name='description' ref='evtDescription' type='text'/>
 						</div>
 
 						<div>
 							<label>*Location : </label>
-							<input name="location" ref="evtLocation" type="text"/>
+							<input name='location' ref='evtLocation' type='text'/>
 						</div>
 						
 						<div>
 							<label>*Thumbnail </label>
-							<input name="thumbnail" ref="evtThumbnail" type="text"/>
+							<input name='thumbnail' ref='evtThumbnail' type='text'/>
 						</div>
 						
 						<div>
 							<label>Gallery </label>
-							<input name="gallery" ref="evtGallery" type="text"/>
+							<input name='gallery' ref='evtGallery' type='text'/>
 						</div>
 
 						<div>
@@ -74,40 +74,40 @@ class AdminEvents extends Component {
 
 						<div>
 							<label>*Start Date : </label>
-							<input name="startDate" ref="evtStartDate" type="text"/>
+							<input name='startDate' ref='evtStartDate' type='text'/>
 						</div>
 
 						<div>
 							<label>End Date : </label>
-							<input name="endDate" ref="evtEndDate" type="text"/>
+							<input name='endDate' ref='evtEndDate' type='text'/>
 						</div>
 		
 						<div>
 							<label>Price : </label>
-							<input name="price" ref="evtPrice" type="number"/>
+							<input name='price' ref='evtPrice' type='number'/>
 						</div>
 
 						<div>
 							<label>Old price : </label>
-							<input name="oldPrice" ref="evtOldPrice" type="number"/>
+							<input name='oldPrice' ref='evtOldPrice' type='number'/>
 						</div>
 
 						<div>
 							<label>Discount : </label>
-							<input name="discount" ref="evtDiscount" type="number"/>
+							<input name='discount' ref='evtDiscount' type='number'/>
 						</div>
 						
 						<div>
 							<label>*Tags : </label>
-							<input name="tags" ref="evtTags" type="text"/>
+							<input name='tags' ref='evtTags' type='text'/>
 						</div>
 
 						<div>
 							<label>*Store : </label>
-							<input name="store" ref="evtStore" type="text"/>
+							<input name='store' ref='evtStore' type='text'/>
 						</div>
 
-						<input type="submit" value="add new event"/>
+						<input type='submit' value='add new event'/>
 
 					</form>
 				</div>
@@ -168,10 +168,10 @@ class AdminEvents extends Component {
 		if(this.inputValidation(eventData)) {
 			Meteor.call('events.insertNewEvent', eventData, (err) => {
 				if(err) {
-					console.log(err.error)
+					alert(err.error)
 				}
 				else {
-					console.log('new event added')
+					alert('new event added')
 				}
 			})
 		}
@@ -179,8 +179,8 @@ class AdminEvents extends Component {
 	}
 }
 export default withTracker(() => {
-  Meteor.subscribe('events_category');
+  Meteor.subscribe('category');
   return {
-	eventsCategory: EventsCategory.find({}).fetch(),
+	eventsCategory: Category.find({'related.event':true}, {}).fetch(),
   };
 })(AdminEvents);

@@ -12,9 +12,10 @@ import OffersMain from '../imports/ui/offers/offersMain';
 import EventsMain from '../imports/ui/events/eventsMain';
 
 // Admin
-import AdminEvents from '../imports/ui/admin/events/adminEvents';
-import AdminEventCategory from '../imports/ui/admin/events/adminEventCategory';
 import Admintest from '../imports/ui/admin/admintest';
+import AdminEvents from '../imports/ui/admin/events/adminEvents';
+import AdminCategory from '../imports/ui/admin/category/adminCategory';
+import AdminStore from '../imports/ui/admin/store/adminStore';
 
 const mount2 = withOptions({
     rootId: 'in-amman-root',
@@ -98,12 +99,26 @@ FlowRouter.route('/admin/events',{
   }],
 });
 
-FlowRouter.route('/admin/events/evtCategory',{
+FlowRouter.route('/admin/events/categories',{
   name: 'admin',
   triggersEnter: [(context, redirect) => {
 	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
-				content:(<AdminEventCategory/>)
+				content:(<AdminCategory/>)
+			})
+		}
+		else{
+			FlowRouter.redirect('/')
+		}
+  }],
+});
+
+FlowRouter.route('/admin/store',{
+  name: 'admin',
+  triggersEnter: [(context, redirect) => {
+	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+			mount2(AdminLayout,{
+				content:(<AdminStore/>)
 			})
 		}
 		else{
