@@ -14,6 +14,7 @@ import EventsMain from '../imports/ui/events/eventsMain';
 // Admin
 import Admintest from '../imports/ui/admin/admintest';
 import AdminEvents from '../imports/ui/admin/events/adminEvents';
+import AdminAddEvent from '../imports/ui/admin/events/adminAddEvent';
 import AdminCategory from '../imports/ui/admin/category/adminCategory';
 import AdminStore from '../imports/ui/admin/store/adminStore';
 
@@ -91,6 +92,20 @@ FlowRouter.route('/admin/events',{
 	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
 				content:(<AdminEvents/>)
+			})
+		}
+		else{
+			FlowRouter.redirect('/')
+		}
+  }],
+});
+
+FlowRouter.route('/admin/events/add-event',{
+  name: 'admin',
+  triggersEnter: [(context, redirect) => {
+	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+			mount2(AdminLayout,{
+				content:(<AdminAddEvent/>)
 			})
 		}
 		else{
