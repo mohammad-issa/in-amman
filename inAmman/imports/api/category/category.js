@@ -9,6 +9,10 @@ if (Meteor.isServer) {
 		return Category.find();
 	});
 
+	Meteor.publish('eventCategories', (() => {
+		return Category.find({'related.event':true}, {});
+	}));
+
 	Meteor.methods({
 		'category.addCategory'(category) {
 			try {
