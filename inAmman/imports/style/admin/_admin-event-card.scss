@@ -1,0 +1,34 @@
+.admin-evt-card {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    background: $p-light-color;
+	.card-thumbnail {
+	    flex-basis: 20%;
+        margin-right: 12px;
+		img {
+			width: 100%;
+		}
+	}
+	.card-body {
+	    flex-basis: 70%;
+		&__title {
+
+		}
+
+		&__content {
+			&__row {
+				&__key {
+					font-size: $s-font;
+				}
+				&__val {
+					font-size: $s-font;
+				}
+			}
+		}
+	}
+	.card-options {
+	    flex-basis: 10%;
+	}
+}
