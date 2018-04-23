@@ -27,7 +27,7 @@ class AdminEventCard extends Component {
 					</div>
 				</div>
 				<div className='card-options'>
-					<button>Edit</button>
+					<a href={ '/admin/events/edit-event/' + this.props.event._id }>Edit</a>
 					<button>Delete</button>
 				</div>
 			</div>
@@ -35,7 +35,16 @@ class AdminEventCard extends Component {
 	}
 
 	getCategory() {
-		return 'issa'
+		let self = this;
+		let array1 = this.props.eventCategories;
+		let found = array1.find(function(element,index) {
+		  return element._id === self.props.event.categoryId;
+		});
+		try {
+			return found.name
+		} catch (error) {
+			return ''
+		}
 	}
 }
 export default withTracker((props) => {
