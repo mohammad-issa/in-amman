@@ -6,6 +6,9 @@ import { Tracker } from 'meteor/tracker';
 import { MainLayout } from '../imports/layout/mainLayout';
 import { AdminLayout } from '../imports/layout/adminLayout';
 
+// Collections
+import { Events } from '../imports/api/events/events.js';
+
 // Client
 import Homepage from '../imports/ui/main/homepage';
 import OffersMain from '../imports/ui/offers/offersMain';
@@ -15,6 +18,7 @@ import EventsMain from '../imports/ui/events/eventsMain';
 import Admintest from '../imports/ui/admin/admintest';
 import AdminEvents from '../imports/ui/admin/events/adminEvents';
 import AdminAddEvent from '../imports/ui/admin/events/adminAddEvent';
+import AdminEditEvent from '../imports/ui/admin/events/adminEditEvent';
 import AdminCategory from '../imports/ui/admin/category/adminCategory';
 import AdminStore from '../imports/ui/admin/store/adminStore';
 
@@ -112,6 +116,23 @@ FlowRouter.route('/admin/events/add-event',{
 			FlowRouter.redirect('/')
 		}
   }],
+});
+
+FlowRouter.route('/admin/events/edit-event/:evtId',{
+  	name: 'admin',
+  	triggersEnter: [(context, redirect) => {
+	    if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
+			FlowRouter.redirect('/')
+		}
+  	}],
+  	subscriptions: function(params, queryParams) {
+        this.register('events', Meteor.subscribe('events'));
+    },
+	action: function(params) {
+		mount2(AdminLayout,{
+			content: (<AdminEditEvent evtId={params.evtId}/>)
+		})
+    },
 });
 
 FlowRouter.route('/admin/events/categories',{
