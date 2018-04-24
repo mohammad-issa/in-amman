@@ -119,14 +119,14 @@ FlowRouter.route('/admin/events/add-event',{
 });
 
 FlowRouter.route('/admin/events/edit-event/:evtId',{
-  	name: 'admin',
+  	name: 'adminEditEvent',
   	triggersEnter: [(context, redirect) => {
 	    if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
 			FlowRouter.redirect('/')
 		}
   	}],
-  	subscriptions: function(params, queryParams) {
-        this.register('events', Meteor.subscribe('events'));
+  	subscriptions: function(params) {
+        this.register('events', Meteor.subscribe('oneEvent', params.evtId));
     },
 	action: function(params) {
 		mount2(AdminLayout,{

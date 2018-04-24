@@ -9,6 +9,11 @@ if (Meteor.isServer) {
 		return Events.find();
 	});
 
+	Meteor.publish('oneEvent', function eventPublication(evtId) {
+		console.log('evtId',evtId)
+		return Events.find({_id:evtId});
+	});
+
 	Meteor.methods({
 		// Insert New Event
 		'events.insertNewEvent'(evtData) {

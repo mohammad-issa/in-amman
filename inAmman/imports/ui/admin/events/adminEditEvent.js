@@ -12,20 +12,15 @@ class AdminEditEvent extends Component {
 		return( 
 			<div className=''>
 				<h1>Edit Event</h1>
+				<p>{this.props.event.title}</p>
 			</div>
 		)
 	}
-
-	// componentDidMount() {
-	// 	console.log(this.props.evtId)
-	// 	let self = this;
-	// 	FlowRouter.subsReady("events", function() {
-	// 	    console.log(Events.findOne({_id:self.props.evtId}));
- //      	});
-	// }
 }
 export default withTracker((props) => {
+	console.log('withTracker')
+	const event = Events.findOne(props.evtId) || {}
 	return {
-		event: Events.findOne({_id:props.evtId}) || {}
+		event 
 	}
 })(AdminEditEvent);
