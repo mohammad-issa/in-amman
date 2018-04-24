@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Events } from '../../../api/events/events.js';
+import AdminEventForm from './adminEventForm';
 
 class AdminEditEvent extends Component {
 	constructor(props) {
@@ -12,20 +13,15 @@ class AdminEditEvent extends Component {
 		return( 
 			<div className=''>
 				<h1>Edit Event</h1>
+				<p>{this.props.event.title}</p>
+				<AdminEventForm data={this.props.event}/>
 			</div>
 		)
 	}
-
-	// componentDidMount() {
-	// 	console.log(this.props.evtId)
-	// 	let self = this;
-	// 	FlowRouter.subsReady("events", function() {
-	// 	    console.log(Events.findOne({_id:self.props.evtId}));
- //      	});
-	// }
 }
 export default withTracker((props) => {
+	const event = Events.findOne(props.evtId) || {}
 	return {
-		event: Events.findOne({_id:props.evtId}) || {}
+		event 
 	}
 })(AdminEditEvent);
