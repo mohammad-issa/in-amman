@@ -13,7 +13,7 @@ class AdminEditEvent extends Component {
 		return( 
 			<div className=''>
 				<h1>Edit Event</h1>
-				<p>{this.props.event.title}</p>
+				<p>#{this.props.event._id}  -  {this.props.event.title}</p>
 				<AdminEventForm data={this.props.event}/>
 			</div>
 		)

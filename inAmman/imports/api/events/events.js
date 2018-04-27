@@ -14,7 +14,7 @@ if (Meteor.isServer) {
 	});
 
 	Meteor.methods({
-		// Insert Or Update New Event
+		// Insert Or Update Event
 		'events.insertUpdateEvent'(evtData) {
 			try {
 				check(evtData, {
