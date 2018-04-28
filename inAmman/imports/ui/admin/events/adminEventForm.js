@@ -21,6 +21,7 @@ class AdminEventForm extends Component {
 				},
 				gallery: [],
 				tags: ['tag1','tag2'],
+				store: 'store',
 				category: this.props.data ? this.props.data.categoryId : '',
 			}
 		}
@@ -110,7 +111,7 @@ class AdminEventForm extends Component {
 
 					<div>
 						<label>*Store : </label>
-						<input name='store' ref='evtStore' type='text'/>
+						<input name='store' ref='evtStore' type='text' value={this.state.evtData.store}/>
 					</div>
 
 					<input type='submit' value='SAVE'/>

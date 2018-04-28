@@ -5,12 +5,18 @@ import { Match } from 'meteor/check'
 export const Events = new Mongo.Collection('events');
 
 if (Meteor.isServer) {
+
 	Meteor.publish('events', function eventsPublication() {
 		return Events.find();
 	});
 
 	Meteor.publish('oneEvent', function eventPublication(evtId) {
 		return Events.find({_id:evtId});
+	});
+
+	Meteor.publish('eventsLazyLoad', function eventLazyLoadPublication(skip, limit) {
+		console.log(skip, limit);
+		return Events.find({}, { sort: {createdAt: -1 }, skip: skip, limit: limit})
 	});
 
 	Meteor.methods({
@@ -69,7 +75,8 @@ if (Meteor.isServer) {
 							subTitle: evtData.subTitle,
 							description: evtData.description,
 							location: evtData.location,
-							categoryId: evtData.categoryId
+							categoryId: evtData.categoryId,
+							thumbnail: evtData.thumbnail,
 						}
 					}
 				)
@@ -101,6 +108,9 @@ if (Meteor.isServer) {
 				});
 				console.log('new event has been inserted');
 			}
+		},
+		'events.totalCounts'() {
+			return Events.find().count();
 		},
 	});
 }
