@@ -91,23 +91,26 @@ FlowRouter.route('/admin',{
 });
 
 FlowRouter.route('/admin/events',{
-  name: 'admin',
-  triggersEnter: [(context, redirect) => {
-	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
-			mount2(AdminLayout,{
-				content:(<AdminEvents/>)
-			})
-		}
-		else{
+	name: 'admin',
+	triggersEnter: [(context, redirect) => {
+    if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
 			FlowRouter.redirect('/')
 		}
-  }],
+	}],
+	subscriptions: function(params) {
+    this.register('events', Meteor.subscribe('events'));
+  },
+	action: function(params) {
+		mount2(AdminLayout,{
+			content:(<AdminEvents/>)
+		})
+  },
 });
 
 FlowRouter.route('/admin/events/add-event',{
   name: 'admin',
   triggersEnter: [(context, redirect) => {
-	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
 				content:(<AdminAddEvent/>)
 			})
@@ -119,20 +122,20 @@ FlowRouter.route('/admin/events/add-event',{
 });
 
 FlowRouter.route('/admin/events/edit-event/:evtId',{
-  	name: 'adminEditEvent',
-  	triggersEnter: [(context, redirect) => {
-	    if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
+	name: 'adminEditEvent',
+	triggersEnter: [(context, redirect) => {
+    if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
 			FlowRouter.redirect('/')
 		}
-  	}],
-  	subscriptions: function(params) {
-        this.register('events', Meteor.subscribe('oneEvent', params.evtId));
-    },
+	}],
+	subscriptions: function(params) {
+    this.register('events', Meteor.subscribe('oneEvent', params.evtId));
+  },
 	action: function(params) {
 		mount2(AdminLayout,{
 			content: (<AdminEditEvent evtId={params.evtId}/>)
 		})
-    },
+  },
 });
 
 FlowRouter.route('/admin/events/categories',{

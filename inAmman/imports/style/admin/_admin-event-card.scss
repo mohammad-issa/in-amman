@@ -1,23 +1,25 @@
 .admin-evt-card {
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
-    background: $p-light-color;
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: 15px;
+	background: $p-light-color;
 	.card-thumbnail {
-	    flex-basis: 20%;
-        margin-right: 12px;
-		img {
-			width: 100%;
-		}
+		flex-basis: 20%;
+		margin-right: 12px;
+		height: 120px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
 	}
 	.card-body {
-	    flex-basis: 70%;
+		flex-basis: 70%;
 		&__title {
-
+    		text-transform: capitalize;
 		}
 
 		&__content {
+    		line-height: 1.2;
 			&__row {
 				&__key {
 					font-size: $s-font;
@@ -29,6 +31,6 @@
 		}
 	}
 	.card-options {
-	    flex-basis: 10%;
+		flex-basis: 10%;
 	}
 }

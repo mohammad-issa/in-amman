@@ -10,10 +10,12 @@ class AdminEventCard extends Component {
 	}
 
 	render() {
+		const thumbnailImg = {
+			backgroundImage: `url(${this.props.event.thumbnail})`,
+		}
 		return( 
 			<div className='admin-evt-card'>
-				<div className='card-thumbnail'>
-					<img src='http://support.yumpu.com/en/wp-content/themes/qaengine/img/default-thumbnail.jpg'/>
+				<div className='card-thumbnail' style={thumbnailImg}>
 				</div>
 				<div className='card-body'>
 					<div className='card-body__title'>
@@ -21,8 +23,12 @@ class AdminEventCard extends Component {
 					</div>
 					<div className='card-body__content'>
 						<div className='card-body__content__row'>
-							<span className='card-body__content__row__key'>category:</span>
+							<span className='card-body__content__row__key'>category:  </span>
 							<span className='card-body__content__row__val'>{this.getCategory()}</span>
+						</div>
+						<div className='card-body__content__row'>
+							<span className='card-body__content__row__key'>location:  </span>
+							<span className='card-body__content__row__val'>{this.props.event.location}</span>
 						</div>
 					</div>
 				</div>

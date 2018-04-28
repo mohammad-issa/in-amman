@@ -14,12 +14,14 @@ class AdminEventForm extends Component {
 				subTitle: this.props.data && this.props.data.subTitle !== null? this.props.data.subTitle : '',
 				description: this.props.data && this.props.data.description !== null ? this.props.data.description : '',
 				thumbnail: this.props.data && this.props.data.thumbnail !== null? this.props.data.thumbnail : '',
+				location: this.props.data && this.props.data.location !== null? this.props.data.location : '',
 				date: {
 					startDate: this.props.data && this.props.data.startDate !== null? this.props.data.startDate : '',
 					endDate: ''
 				},
 				gallery: [],
 				tags: ['tag1','tag2'],
+				store: 'store',
 				category: this.props.data ? this.props.data.categoryId : '',
 			}
 		}
@@ -56,7 +58,7 @@ class AdminEventForm extends Component {
 
 					<div>
 						<label>*Location : </label>
-						<input name='location' ref='evtLocation' type='text'/>
+						<input name='location' ref='evtLocation' type='text' value={this.state.evtData.location} onChange={(e) => this.setValues(e,'location')}/>
 					</div>
 					
 					<div>
@@ -109,7 +111,7 @@ class AdminEventForm extends Component {
 
 					<div>
 						<label>*Store : </label>
-						<input name='store' ref='evtStore' type='text'/>
+						<input name='store' ref='evtStore' type='text' value={this.state.evtData.store}/>
 					</div>
 
 					<input type='submit' value='SAVE'/>
@@ -191,10 +193,11 @@ class AdminEventForm extends Component {
 		if(this.inputValidation(eventData)) {
 			Meteor.call('events.insertUpdateEvent', eventData, (err) => {
 				if(err) {
-					alert(err.error)
+					alert(err.error);
 				}
 				else {
-					alert('updated :D')
+					alert('updated :D');
+					FlowRouter.go('/admin/events');
 				}
 			})
 		}
