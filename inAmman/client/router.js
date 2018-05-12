@@ -8,6 +8,7 @@ import { AdminLayout } from '../imports/layout/adminLayout';
 
 // Collections
 import { Events } from '../imports/api/events/events.js';
+import { Store } from '../imports/api/store/store.js';
 
 // Client
 import Homepage from '../imports/ui/main/homepage';
@@ -23,8 +24,8 @@ import AdminCategory from '../imports/ui/admin/category/adminCategory';
 import AdminStore from '../imports/ui/admin/store/adminStore';
 
 const mount2 = withOptions({
-    rootId: 'in-amman-root',
-    // rootProps: {'className': 'some-class-name'}
+	rootId: 'in-amman-root',
+	// rootProps: {'className': 'some-class-name'}
 }, mount);
 
 FlowRouter.wait();
@@ -32,7 +33,7 @@ FlowRouter.wait();
 Tracker.autorun(() => {
   // wait on roles to intialise so we can check is use is in proper role
   if (Roles.subscription.ready() && !FlowRouter._initialized) {
-    FlowRouter.initialize()
+	FlowRouter.initialize()
   }
 });
 
@@ -46,8 +47,8 @@ FlowRouter.route('/',{
 
 FlowRouter.route('/offers',{
 	triggersEnter: [(context, redirect) => {
-	    // console.log(context, redirect)
-  	}],
+		// console.log(context, redirect)
+	}],
 	action(){
 		if(!Meteor.userId()){
 			FlowRouter.redirect('/')
@@ -62,8 +63,8 @@ FlowRouter.route('/offers',{
 
 FlowRouter.route('/events',{
 	triggersEnter: [(context, redirect) => {
-	    // console.log(context, redirect)
-  	}],
+		// console.log(context, redirect)
+	}],
 	action(){
 		if(!Meteor.userId()){
 			FlowRouter.redirect('/')
@@ -79,7 +80,7 @@ FlowRouter.route('/events',{
 FlowRouter.route('/admin',{
   name: 'admin',
   triggersEnter: [(context, redirect) => {
-	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+		if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
 				content:(<Admintest/>)
 			})
@@ -93,12 +94,12 @@ FlowRouter.route('/admin',{
 FlowRouter.route('/admin/events',{
 	name: 'admin',
 	triggersEnter: [(context, redirect) => {
-    if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
+	if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
 			FlowRouter.redirect('/')
 		}
 	}],
 	subscriptions: function(params) {
-    this.register('events', Meteor.subscribe('events'));
+	this.register('events', Meteor.subscribe('events'));
   },
 	action: function(params) {
 		mount2(AdminLayout,{
@@ -110,7 +111,7 @@ FlowRouter.route('/admin/events',{
 FlowRouter.route('/admin/events/add-event',{
   name: 'admin',
   triggersEnter: [(context, redirect) => {
-    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+	if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
 				content:(<AdminAddEvent/>)
 			})
@@ -124,12 +125,12 @@ FlowRouter.route('/admin/events/add-event',{
 FlowRouter.route('/admin/events/edit-event/:evtId',{
 	name: 'adminEditEvent',
 	triggersEnter: [(context, redirect) => {
-    if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
+	if((Meteor.userId() && Meteor.user().roles.indexOf('Admin') === 0) || !Meteor.userId()){
 			FlowRouter.redirect('/')
 		}
 	}],
 	subscriptions: function(params) {
-    this.register('events', Meteor.subscribe('oneEvent', params.evtId));
+	this.register('events', Meteor.subscribe('oneEvent', params.evtId));
   },
 	action: function(params) {
 		mount2(AdminLayout,{
@@ -141,7 +142,7 @@ FlowRouter.route('/admin/events/edit-event/:evtId',{
 FlowRouter.route('/admin/events/categories',{
   name: 'admin',
   triggersEnter: [(context, redirect) => {
-	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+		if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
 				content:(<AdminCategory/>)
 			})
@@ -155,7 +156,7 @@ FlowRouter.route('/admin/events/categories',{
 FlowRouter.route('/admin/store',{
   name: 'admin',
   triggersEnter: [(context, redirect) => {
-	    if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
+		if(Meteor.userId() && Meteor.user().roles.indexOf('Admin') !== -1){
 			mount2(AdminLayout,{
 				content:(<AdminStore/>)
 			})
@@ -164,4 +165,7 @@ FlowRouter.route('/admin/store',{
 			FlowRouter.redirect('/')
 		}
   }],
+	// subscriptions: function(params) {
+	// 	this.register('store', Meteor.subscribe('store'));
+	// }
 });

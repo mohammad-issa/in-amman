@@ -39,9 +39,19 @@ class AdminEventForm extends Component {
 	}
 
 	render() {
+		const thumbnailStyle = {
+			backgroundImage: this.state.evtData.thumbnail !== '' ? `url(${this.state.evtData.thumbnail})` : `url(http://demo.makitweb.com/broken_image/images/noimage.png)`,
+			width: '100px',
+			height: '100px',
+		    backgroundSize: 'cover',
+			backgroundPosition: 'center',
+			display: 'inline-block',
+			verticalAlign: 'middle',
+			marginLeft: '12px'
+		}
 		return(
 			<div>
-				<form onSubmit={this.addEvent}>
+				<form className='admin-form' onSubmit={this.addEvent}>
 					<div>
 						<label>*Title : </label>
 						<input name='title' ref='evtTitle' type='text' value={this.state.evtData.title} onChange={(e) => this.setValues(e,'title')}/>
@@ -64,6 +74,7 @@ class AdminEventForm extends Component {
 					<div>
 						<label>*Thumbnail </label>
 						<input name='thumbnail' ref='evtThumbnail' type='text' value={this.state.evtData.thumbnail} onChange={(e) => this.setValues(e,'thumbnail')}/>
+						<div style={thumbnailStyle}></div>
 					</div>
 					
 					<div>

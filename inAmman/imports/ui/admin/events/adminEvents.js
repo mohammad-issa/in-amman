@@ -9,10 +9,10 @@ export default class AdminEvents extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			events: Events.find({}, {skip: 0, limit: 5, sort: { createdAt: -1 } }).fetch() || [],
+			events: Events.find({}, {skip: 0, limit: 10, sort: { createdAt: -1 } }).fetch() || [],
 			contentHeight: 0,
 			y: 0,
-			limit: 5,
+			limit: 10,
 			skip: 0,
 			totalCounts: 0
 		}
@@ -24,7 +24,7 @@ export default class AdminEvents extends Component {
 		let self = this;
 		FlowRouter.subsReady("events", function() {
 			self.setState({
-				events: Events.find({}, {skip: 0, limit: 5, sort: { createdAt: -1 } }).fetch() || [],
+				events: Events.find({}, {skip: 0, limit: self.state.limit , sort: { createdAt: -1 } }).fetch() || [],
 			})
     });
 	}
