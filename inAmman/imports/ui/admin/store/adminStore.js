@@ -1,6 +1,6 @@
-import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
-import { withTracker } from 'meteor/react-meteor-data';
+
+import AdminStoreForm from './adminStoreForm.js'
 
 export default class AdminStore extends Component {
 	constructor(props) {
@@ -9,7 +9,10 @@ export default class AdminStore extends Component {
 
 	render() {
 		return (
-			<h1>AdminStore</h1>
+			<div>
+				<h1>AdminStore</h1>
+				<AdminStoreForm />
+			</div>
 		)
 	}
 }
